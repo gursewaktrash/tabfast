@@ -1,0 +1,83 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.container input {
+  width: 100%;
+  height: 35px;
+  font-size: 18px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.button-group {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.button-group button {
+  flex: 1;
+  padding: 10px 16px;
+  margin: 5px;
+  font-size: 16px;
+  background-color: #3e3dc7;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.button-group button:hover {
+  background-color: #5959cf;
+}
+
+.button-group #deleteAllButton {
+  background-color: #ff0000;
+}
+
+.button-group #deleteAllButton:hover {
+  background-color: #cc0000;
+}
+
+.saved-links {
+  max-height: 100px;
+  overflow-y: scroll;
+}
+
+.saved-links ul {
+  padding: 0;
+  margin: 0;
+}
+
+.saved-links li {
+  margin-bottom: 15px;
+}
+
+.saved-links a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.saved-links a:hover {
+  text-decoration: underline;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 480px) {
+  .button-group button {
+    flex: auto; /* Adjusted button width for smaller screens */
+  }
+}
