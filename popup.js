@@ -10,14 +10,25 @@ document.addEventListener("DOMContentLoaded", function () {
     if (result.links) {
       var linksList = document.createElement("ul");
       linksList.style.listStyleType = "none";
+      linksList.className = "saved-links"; 
       result.links.forEach(function (link) {
         var linkItem = document.createElement("li");
         var linkElement = document.createElement("a");
         linkElement.href = link;
-        linkElement.style.display = "block";
-        linkElement.style.fontSize = "16px";
         linkElement.textContent = link;
+        linkElement.addEventListener("click", function (event) { 
+          event.preventDefault();  //To open saved links in a new tab
+          chrome.tabs.create({ url: link });  
+        });
         linkItem.appendChild(linkElement);
+
+        // Fetch the favicon for the website
+        var faviconUrl = getFaviconUrl(link);
+        var faviconImage = document.createElement("img");
+        faviconImage.src = faviconUrl;
+        faviconImage.className = "favicon";
+        linkItem.appendChild(faviconImage);
+
         linksList.appendChild(linkItem);
       });
       savedLinks.appendChild(linksList);
@@ -60,10 +71,17 @@ document.addEventListener("DOMContentLoaded", function () {
           var linkElement = document.createElement("a");
           linkElement.href = link;
           linkElement.textContent = link;
-          linkElement.style.display = "block"; // Display links as block elements
-          linkElement.style.fontSize = "16px"; // Set text size to 18px
           linkItem.appendChild(linkElement);
+
+          // Fetch the favicon for the website
+          var faviconUrl = getFaviconUrl(link);
+          var faviconImage = document.createElement("img");
+          faviconImage.src = faviconUrl;
+          faviconImage.className = "favicon";
+          linkItem.appendChild(faviconImage);
+
           savedLinks.firstChild.appendChild(linkItem);
+
 
           // Clear the input field
           linkInput.value = "";
@@ -71,4 +89,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   }
+
+
+  // Function to get the favicon URL 
+  function getFaviconUrl(url) {
+    var hostname = new URL(url).hostname;
+    return "https://www.google.com/s2/favicons?domain=" + hostname;
+  }
 });
+
+
