@@ -53,40 +53,43 @@ body {
 }
 
 .saved-links {
-  max-height: 100px;
-  overflow-y: scroll;
-  list-style-type: none;
-}
-
-.saved-links ul {
-  padding: 0;
-  margin: 0;
+  padding-left: 10px;
+  font-size: 14px;
 }
 
 .saved-links li {
-  margin-bottom: 15px;
-  text-align: left;
-  font-size: 16px;
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 
-.saved-links a {
-  color: #000000;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
-
-.saved-links .favicon {
+.favicon {
   width: 16px;
   height: 16px;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
+
+.link-text {
+  display: flex;
+  align-items: center;
+}
 
 .saved-links a:hover {
   text-decoration: underline;
+}
+
+.trash-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.trash-icon:hover {
+  transform: scale(1.2);
 }
 
 /* Media query for smaller screens */

@@ -29,11 +29,34 @@ document.addEventListener("DOMContentLoaded", function () {
         faviconImage.className = "favicon";
         linkItem.appendChild(faviconImage);
 
+        // Add trash icon
+        var trashIcon = document.createElement("span");
+        trashIcon.innerHTML = "&#128465;&#65039;"; 
+        trashIcon.className = "trash-icon";
+        trashIcon.addEventListener("click", function () {
+          deleteLink(link);
+          linkItem.remove();
+
+        });
+        linkItem.appendChild(trashIcon);
+
         linksList.appendChild(linkItem);
       });
       savedLinks.appendChild(linksList);
     }
   });
+
+   // Function to delete a link from storage
+   function deleteLink(link) {
+    chrome.storage.sync.get(["links"], function (result) {
+      var links = result.links || [];
+      var index = links.indexOf(link);
+      if (index > -1) {
+        links.splice(index, 1);
+        chrome.storage.sync.set({ links: links });
+      }
+    });
+  }
 
   // Add event listener for the save button
   saveButton.addEventListener("click", function () {
