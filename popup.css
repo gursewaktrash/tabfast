@@ -92,6 +92,25 @@ body {
   transform: scale(1.2);
 }
 
+.alert-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 9999;
+}
+
+.alert-message {
+  font-size: 16px;
+  text-align: center;
+}
+
+
+
 /* Media query for smaller screens */
 @media screen and (max-width: 480px) {
   .button-group button {
